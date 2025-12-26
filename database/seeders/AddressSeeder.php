@@ -1,0 +1,15 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Address;
+use Illuminate\Database\Seeder;
+
+class AddressSeeder extends Seeder
+{
+    public function run()
+    {
+        // ১০টি রেকর্ড তৈরি করা
+        Address::factory()->count(10)->create();
+    }
+}
