@@ -87,10 +87,7 @@
                 <div class="m-0 border-0 dropdown-menu dropdown-menu-end bg-light rounded-0 rounded-bottom">
                     <a href="{{ route('admin.profile') }}" class="dropdown-item">My Profile</a>
                     <a href="{{ route('admin.settings') }}" class="dropdown-item">Settings</a>
-                    <form method="POST" action="{{ route('logout') }}" x-data>
-                        @csrf
-                        <a href="{{ route('logout') }}" @click.prevent="$root.submit();" class="dropdown-item">Log Out</a>
-                    </form>
+                    <a href="#" wire:click.prevent="logout" class="dropdown-item">Log Out</a>
                 </div>
             </div>
         </div>
