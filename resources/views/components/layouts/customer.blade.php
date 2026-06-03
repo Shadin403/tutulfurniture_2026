@@ -23,7 +23,7 @@
 <body>
     {{-- <div class="loader" id="loader">
         <div class="spinner">
-            <img src="{{ asset('assets\imgs\logo\Screenshot_3-removebg-preview.png') }}" alt="">
+            <img src="{{ \App\Models\Setting::where('key', 'site_logo')->value('value') ? asset('storage/' . \App\Models\Setting::where('key', 'site_logo')->value('value')) : asset('assets/imgs/logo/Screenshot_3-removebg-preview.png') }}" alt="logo">
         </div>
     </div> --}}
 

@@ -63,7 +63,7 @@
                 <div class="header-wrap">
                     <div class="logo logo-width-1">
                         <a href="{{ route('home') }}" wire:navigate><img
-                                src="{{ asset('assets/imgs/logo/Screenshot_3-removebg-preview.png') }}"
+                                src="{{ \App\Models\Setting::where('key', 'site_logo')->value('value') ? asset('storage/' . \App\Models\Setting::where('key', 'site_logo')->value('value')) : asset('assets/imgs/logo/Screenshot_3-removebg-preview.png') }}"
                                 alt="logo" /></a>
                     </div>
                     <div class="header-right">
@@ -258,7 +258,7 @@
                 <div class="header-wrap header-space-between position-relative" style="justify-content: space-around">
                     <div class="logo logo-width-1 d-block d-lg-none">
                         <a href="{{ route('home') }}" wire:navigate><img
-                                src="{{ asset('assets/imgs/logo/Screenshot_3-removebg-preview.png') }}"
+                                src="{{ \App\Models\Setting::where('key', 'site_logo')->value('value') ? asset('storage/' . \App\Models\Setting::where('key', 'site_logo')->value('value')) : asset('assets/imgs/logo/Screenshot_3-removebg-preview.png') }}"
                                 alt="logo" /></a>
                     </div>
                     <div class="header-nav d-none d-lg-flex">
@@ -560,7 +560,7 @@
             <div class="mobile-header-top">
                 <div class="mobile-header-logo">
                     <a href="{{ route('home') }}" wire:navigate><img
-                            src="{{ asset('assets/imgs/logo/Screenshot_3-removebg-preview.png') }}"
+                            src="{{ \App\Models\Setting::where('key', 'site_logo')->value('value') ? asset('storage/' . \App\Models\Setting::where('key', 'site_logo')->value('value')) : asset('assets/imgs/logo/Screenshot_3-removebg-preview.png') }}"
                             alt="logo" /></a>
                 </div>
                 <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
@@ -886,7 +886,7 @@
     <div class="menu-drawer" id="menu-drawer">
         <div class="menu-drawer-header">
             <div class="menu-drawer-logo">
-                <img src="{{ asset('assets/imgs/logo/Screenshot_3-removebg-preview.png') }}" alt="Tutul Furniture">
+                <img src="{{ \App\Models\Setting::where('key', 'site_logo')->value('value') ? asset('storage/' . \App\Models\Setting::where('key', 'site_logo')->value('value')) : asset('assets/imgs/logo/Screenshot_3-removebg-preview.png') }}" alt="{{ \App\Models\Setting::where('key', 'site_name')->value('value') ?? 'Tutul Furniture' }}">
             </div>
             <button class="menu-close" id="menu-close">
                 <i class="fas fa-times"></i>

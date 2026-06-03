@@ -1,13 +1,13 @@
-   <!-- Sidebar Start -->
+<!-- Sidebar Start -->
    <div>
        <div class="pb-3 sidebar pe-4">
            <nav class="navbar bg-light navbar-light">
                <a href="javascript:void(0)" class="mx-4 mb-3 navbar-brand">
-                   <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>Tutul Furniture</h3>
+                   <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>{{ \App\Models\Setting::where('key', 'site_name')->value('value') ?? 'Tutul Furniture' }}</h3>
                </a>
                <div class="mb-4 d-flex align-items-center ms-4">
                    <div class="position-relative">
-                       <img class="rounded-circle" src="{{ asset('admin/img/user.jpg') }}" alt=""
+                       <img class="rounded-circle" src="{{ Auth::user()->profile_image ? asset('storage/' . Auth::user()->profile_image) : asset('admin/img/user.jpg') }}" alt=""
                            style="width: 40px; height: 40px;">
                        <div
                            class="bottom-0 p-1 border border-2 border-white bg-success rounded-circle position-absolute end-0">
@@ -135,13 +135,47 @@
                        </div>
                    </div>
                </div>
+
+               <!-- Orders Section -->
                <div class="navbar-nav w-100">
                    <div class="nav-item dropdown">
-                       <form id="logout-form" action="" method="POST">
-                           <a href="#" class="nav-link">
-                               <i class="fas fa-sign-out-alt me-2" style="color: black;"></i>Logout
+                       <a href="javascript:void(0)"
+                           onclick="document.getElementById('ordersDropdown').classList.toggle('show');"
+                           class="nav-link dropdown-toggle">
+                           <i class="fa fa-shopping-cart me-2"></i>
+                           Orders
+                       </a>
+
+                       <div id="ordersDropdown" class="bg-transparent border-0 dropdown-menu" style="margin-left: 20px">
+                           <a href="{{ route('admin.orders.create') }}" wire:navigate class="dropdown-item">
+                               <i class="fa fa-plus me-2"></i> Create Order
                            </a>
-                       </form>
+                           <a href="{{ route('admin.orders') }}" wire:navigate class="dropdown-item">
+                               <i class="fa fa-list me-2"></i> Order list
+                           </a>
+                       </div>
+                   </div>
+               </div>
+
+               <!-- Staff Section -->
+               <div class="navbar-nav w-100">
+                   <a href="{{ route('admin.staff') }}" wire:navigate
+                       class="nav-item nav-link {{ Route::is('admin.staff') ? 'active' : '' }}"><i
+                           class="fa fa-user-shield me-2"></i>Staff List</a>
+               </div>
+
+               <!-- Settings Section -->
+               <div class="navbar-nav w-100">
+                   <a href="{{ route('admin.settings') }}" wire:navigate
+                       class="nav-item nav-link {{ Route::is('admin.settings') ? 'active' : '' }}"><i
+                           class="fa fa-cog me-2"></i>Settings</a>
+               </div>
+
+               <div class="navbar-nav w-100">
+                   <div class="nav-item dropdown">
+                       <a href="#" wire:click.prevent="logout" class="nav-link">
+                           <i class="fas fa-sign-out-alt me-2" style="color: black;"></i>Logout
+                       </a>
                    </div>
                </div>
            </nav>

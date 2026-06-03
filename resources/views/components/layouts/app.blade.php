@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Tutul Furniture - @yield('title') </title>
+    <title>{{ \App\Models\Setting::where('key', 'site_name')->value('value') ?? 'Tutul Furniture' }} - @yield('title') </title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="{{ $description ?? 'Tutul Furniture' }}">
-    <meta name="title" content="{{ $meta_title ?? 'Tutul Furniture' }}">
+    <meta name="description" content="{{ $description ?? \App\Models\Setting::where('key', 'site_name')->value('value') ?? 'Tutul Furniture' }}">
+    <meta name="title" content="{{ $meta_title ?? \App\Models\Setting::where('key', 'site_name')->value('value') ?? 'Tutul Furniture' }}">
     <meta property="og:title" content="">
     <meta property="og:type" content="">
     <meta property="og:url" content="">
@@ -74,7 +74,7 @@
 
     <div class="loader" id="loader">
         <div class="spinner">
-            <img src="{{ asset('assets\imgs\logo\Screenshot_3-removebg-preview.png') }}" alt="">
+            <img src="{{ \App\Models\Setting::where('key', 'site_logo')->value('value') ? asset('storage/' . \App\Models\Setting::where('key', 'site_logo')->value('value')) : asset('assets/imgs/logo/Screenshot_3-removebg-preview.png') }}" alt="logo">
         </div>
     </div>
 

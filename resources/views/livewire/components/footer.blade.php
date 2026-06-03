@@ -38,7 +38,7 @@
                         <div class="widget-about font-md mb-md-5 mb-lg-0">
                             <div class="logo logo-width-1 wow fadeIn animated">
                                 <a href="{{ route('home') }}" wire:navigate><img
-                                        src="{{ asset('assets/imgs/logo/Screenshot_3-removebg-preview.png') }}"
+                                        src="{{ \App\Models\Setting::where('key', 'site_logo')->value('value') ? asset('storage/' . \App\Models\Setting::where('key', 'site_logo')->value('value')) : asset('assets/imgs/logo/Screenshot_3-removebg-preview.png') }}"
                                         alt="logo" /></a>
                             </div>
                             <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">

@@ -16,4 +16,14 @@ class SideNavigation extends Component
     {
         return view('livewire.admin.components.side-navigation');
     }
+
+    public function logout()
+    {
+        auth()->logout();
+        session()->regenerateToken(); 
+        \Surfsidemedia\Shoppingcart\Facades\Cart::instance('cart')->destroy();
+        \Surfsidemedia\Shoppingcart\Facades\Cart::instance('wishlist')->destroy();
+        session()->flash('logout-success', 'You are logged out');
+        $this->redirect(route('login'), navigate: true);
+    }
 }
