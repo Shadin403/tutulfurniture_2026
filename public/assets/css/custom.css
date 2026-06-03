@@ -645,4 +645,36 @@ html, body {
 
 }
 
+/* ===== SHOP PAGE PAGINATION FIX ===== */
+.shop-pagination .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    justify-content: center;
+}
+.shop-pagination .page-item .page-link {
+    border-radius: 10px !important;
+    border: 1.5px solid #e8ecef !important;
+    color: #2d3748 !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    padding: 8px 14px !important;
+    transition: all 0.3s ease !important;
+    background: white !important;
+    text-decoration: none !important;
+}
+.shop-pagination .page-item.active .page-link,
+.shop-pagination .page-item .page-link:hover {
+    background: #e67e22 !important;
+    border-color: #e67e22 !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(230,126,34,0.35) !important;
+}
+.shop-pagination .page-item.disabled .page-link {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
 
