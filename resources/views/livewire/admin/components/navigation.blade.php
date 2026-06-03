@@ -80,14 +80,17 @@
             </div>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                    <img class="rounded-circle me-lg-2" src="{{ asset('/img/user.jpg') }}" alt=""
+                    <img class="rounded-circle me-lg-2" src="{{ auth()->user()->profile_image ? asset('storage/' . auth()->user()->profile_image) : asset('/img/user.jpg') }}" alt=""
                         style="width: 40px; height: 40px;">
-                    <span class="d-none d-lg-inline-flex">John Doe</span>
+                    <span class="d-none d-lg-inline-flex">{{ auth()->user()->name }}</span>
                 </a>
                 <div class="m-0 border-0 dropdown-menu dropdown-menu-end bg-light rounded-0 rounded-bottom">
-                    <a href="#" class="dropdown-item">My Profile</a>
-                    <a href="#" class="dropdown-item">Settings</a>
-                    <a href="#" class="dropdown-item">Log Out</a>
+                    <a href="{{ route('admin.profile') }}" class="dropdown-item">My Profile</a>
+                    <a href="{{ route('admin.settings') }}" class="dropdown-item">Settings</a>
+                    <form method="POST" action="{{ route('logout') }}" x-data>
+                        @csrf
+                        <a href="{{ route('logout') }}" @click.prevent="$root.submit();" class="dropdown-item">Log Out</a>
+                    </form>
                 </div>
             </div>
         </div>

@@ -114,6 +114,18 @@ Route::middleware(['auth', AdminMiddlewere::class])->prefix('admin')->group(func
 
     Route::get('/dashboard', Dashboard::class)->name('admin.dashboard');
 
+    // Admin Profile & Settings
+    Route::get('/profile', \App\Livewire\Admin\Profile::class)->name('admin.profile');
+    Route::get('/settings', \App\Livewire\Admin\Settings\Index::class)->name('admin.settings');
+
+    // Staff
+    Route::get('/staff', \App\Livewire\Admin\Staff\Index::class)->name('admin.staff');
+
+    // Orders
+    Route::get('/orders', \App\Livewire\Admin\Order\Index::class)->name('admin.orders');
+    Route::get('/orders/create', \App\Livewire\Admin\Order\Create::class)->name('admin.orders.create');
+    Route::get('/orders/edit/{id}', \App\Livewire\Admin\Order\Edit::class)->name('admin.orders.edit');
+
     //Customer Routes
     Route::get('/all-customers', AllCustomers::class)->name('admin.all.customers');
 
