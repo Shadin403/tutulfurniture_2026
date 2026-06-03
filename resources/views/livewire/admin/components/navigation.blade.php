@@ -12,6 +12,10 @@
             <input class="border-0 form-control" type="search" placeholder="Search">
         </form>
         <div class="navbar-nav align-items-center ms-auto">
+            <a href="{{ route('home') }}" target="_blank" class="nav-link me-3" title="Visit Store">
+                <i class="fa fa-globe"></i>
+                <span class="d-none d-lg-inline-flex ms-1">Visit Store</span>
+            </a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                     <i class="fa fa-envelope me-lg-2"></i>
